@@ -54,6 +54,7 @@ const Login = () => {
             const signInnedUser=result.user;
             console.log(signInnedUser);
             navigate(from, {replace:true})
+            form.reset()
         })
         .catch(error=>{
             console.log(error);
