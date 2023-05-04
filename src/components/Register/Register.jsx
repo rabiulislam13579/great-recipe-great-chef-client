@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
+import { AuthContext } from '../providers/AuthProvider';
 
-const Resister = () => {
+
+const Register = () => {
     const [error,setError]=useState('')
     const [success,setSuccess]=useState('')
-    const {createUser}=useContext(AuthContext);
+    const {createUser,profileUpdate}=useContext(AuthContext);
 
     const handleResister=event=>{
         event.preventDefault();
@@ -31,6 +32,13 @@ const Resister = () => {
             const createdUser= result.user;
             console.log(createdUser);
             setSuccess('user registered successfully')
+            profileUpdate(name,photo)
+            .then(()=>{
+              //profile updated
+            })
+            .catch((error)=>{
+              setError(error.message)
+            })
         })
         .catch(error=>{
             setError(error.message);
@@ -90,4 +98,4 @@ const Resister = () => {
     );
 };
 
-export default Resister;
+export default Register;

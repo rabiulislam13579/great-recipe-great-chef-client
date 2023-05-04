@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Container, Nav, Button, Navbar } from 'react-bootstrap';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import {  NavLink } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
+import {  Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
+import { AuthContext } from '../providers/AuthProvider';
 
 const NavBar = () => {
 
@@ -53,12 +53,12 @@ const renderTooltip = (props) => (
           </OverlayTrigger> : 
             <img className='rounded-circle p-img mx-3' src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
           }
-          <NavLink  to="/">Home</NavLink>
+          <Link className='text-decoration-none'  to="/">Home</Link>
             { user? <Button onClick={handleLogout} className='px-3 mx-3 text-decoration-none' to="/logout">Logout</Button>:
-              <NavLink  to="/login">Login</NavLink>
+              
+            <Link className='text-decoration-none ms-3' to="/login">Login</Link>
             }
-            <NavLink  to="/resister">Resister</NavLink>
-            <button className='mx-3 border rounded  border-none text-decoration-none'><NavLink   to="/blogs">Blogs</NavLink></button>
+            <button className='mx-3 border rounded  border-none text-decoration-none'><Link className='text-decoration-none'   to="/blogs">Blogs</Link></button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

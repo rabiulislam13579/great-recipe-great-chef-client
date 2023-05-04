@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { AuthContext } from '../../providers/AuthProvider';
+
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import app from '../../firebase/firebase.config';
+import app from '../firebase/firebase-config';
+import { AuthContext } from '../providers/AuthProvider';
+
 
 
 const Login = () => {
@@ -63,7 +65,7 @@ const Login = () => {
 
     return (
         <Container className='mx-auto,mt-5 w-25'>
-            <h2 className='text-success text-center'>Please Resister</h2>
+            <h2 className='text-success text-center'>Please Log In</h2>
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

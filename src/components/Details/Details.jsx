@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from 'react-router-dom';
 import './Details.css'
-import FoodCard from './FoodCard';
+import FoodCard from '../FoodCard/FoodCard';
+
 const Details = () => {
     const { id } = useParams()
     const details = useLoaderData()
