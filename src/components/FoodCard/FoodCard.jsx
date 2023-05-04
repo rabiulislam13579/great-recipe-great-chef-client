@@ -14,7 +14,7 @@ const FoodCard = ({s}) => {
         toast('added to favorite')
     }
     return (
-        <Container className='card  my-3 p-3'>
+        <Container className='s-card  my-3 p-3'>
                     
                <img className='s-img' src={s.img} alt="" />
                <h3 className="card-title">{s.name}</h3>
