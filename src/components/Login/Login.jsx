@@ -14,53 +14,56 @@ const Login = () => {
     const auth = getAuth(app)
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
-
-    const handleGoogleLogin=()=>{
-
-        signInWithPopup(auth, googleProvider)
-  .then((result) => {
-    const user = result.user;
-    console.log(user);
-   
-  }).catch((error) => {
-    const errorMessage = error.message;
-    console.log(errorMessage);
-  });
-  
-    }
-
-    const handleGithubLogin=()=>{
-        signInWithPopup(auth, githubProvider)
-        .then((result) => {
-          const user = result.user;
-          console.log(user);
-        }).catch((error) => {
-          const errorMessage = error.message;
-            console.log(errorMessage);
-        });
-    }
-
-    const {signIn}=useContext(AuthContext);
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
 
-    const handleLogin=(event)=>{
+
+    const handleGoogleLogin = () => {
+
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
+
+            }).catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+
+    }
+
+    const handleGithubLogin = () => {
+        signInWithPopup(auth, githubProvider)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
+            }).catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
+
+    const { signIn } = useContext(AuthContext);
+
+    const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
-        
-        const email=form.email.value;
-        const password=form.password.value;
+
+        const email = form.email.value;
+        const password = form.password.value;
         signIn(email, password)
-        .then(result=>{
-            const signInnedUser=result.user;
-            console.log(signInnedUser);
-            navigate(from, {replace:true})
-            form.reset()
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+            .then(result => {
+                const signInnedUser = result.user;
+                console.log(signInnedUser);
+                navigate(from, { replace: true })
+                form.reset()
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (

@@ -30,7 +30,7 @@ const renderTooltip = (props) => (
        <Container>
          <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand className='text-success'>Cooking Master</Navbar.Brand>
+        <Navbar.Brand className='text-success'>Great Recipe Great Chef</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav

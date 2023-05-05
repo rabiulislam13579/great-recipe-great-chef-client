@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from 'react-router-dom';
 import './Details.css'
 import FoodCard from '../FoodCard/FoodCard';
+import { Container, Row } from 'react-bootstrap';
 
 const Details = () => {
     const { id } = useParams()
@@ -8,7 +9,7 @@ const Details = () => {
     const card=details.recipes;
     
     return (
-        <div>
+        <Container>
             <div className='text-center container'>
                 <img className='d-img rounded' src={details.image} alt="" />
                 <h2>{details.food}</h2>
@@ -18,15 +19,15 @@ const Details = () => {
                 <p className='w-50 mx-auto text-success'>{details.number} recipes</p>
                 <h3 className='text-success fw-bold my-3'>Recipe</h3>
             </div>
-            <div className='s-card container '>
+            <Row className='s-card container  '>
                 {
                     card.map(s=><FoodCard
                     key={s.name}
                     s={s}
                     ></FoodCard>)
                 }
-            </div>
-        </div>
+            </Row>
+        </Container>
     );
 };
 

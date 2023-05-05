@@ -1,4 +1,5 @@
 import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const About = () => {
     return (
@@ -16,7 +17,8 @@ const About = () => {
                 </ul>
             </div>
             <div className='col-md-6'>
-                <img src="https://t3.ftcdn.net/jpg/00/96/40/18/360_F_96401810_LO67BgmOuktElpee2xNF7hOVIbQC2nvD.jpg" alt="" />
+                <LazyLoadImage src="https://t3.ftcdn.net/jpg/00/96/40/18/360_F_96401810_LO67BgmOuktElpee2xNF7hOVIbQC2nvD.jpg" alt="Image Alt" effect="blur" />
+                
             </div>
         </div>
     );
