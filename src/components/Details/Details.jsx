@@ -9,7 +9,7 @@ const Details = () => {
     const card=details.recipes;
     
     return (
-        <Container>
+        <Container className='mt-5'>
             <div className='text-center container'>
                 <img className='d-img rounded' src={details.image} alt="" />
                 <h2>{details.food}</h2>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
@@ -10,6 +10,8 @@ import { AuthContext } from '../providers/AuthProvider';
 
 
 const Login = () => {
+    const [error,setError]=useState('');
+    const [success , setSuccess]=useState('');
 
     const auth = getAuth(app)
     const googleProvider = new GoogleAuthProvider();
@@ -20,29 +22,34 @@ const Login = () => {
 
 
     const handleGoogleLogin = () => {
-
+       
+        setError('');
+        setSuccess('');
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true })
+                setSuccess('log in successfully')
 
             }).catch((error) => {
-                const errorMessage = error.message;
-                console.log(errorMessage);
+                setError (error.message)
+                
             });
 
     }
 
     const handleGithubLogin = () => {
+        setError('');
+        setSuccess('');
         signInWithPopup(auth, githubProvider)
             .then((result) => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true })
+                setSuccess('log in successfully')
             }).catch((error) => {
-                const errorMessage = error.message;
-                console.log(errorMessage);
+                setError (error.message)
             });
     }
 
@@ -54,15 +61,19 @@ const Login = () => {
 
         const email = form.email.value;
         const password = form.password.value;
+
+        setError('');
+        setSuccess('');
         signIn(email, password)
             .then(result => {
                 const signInnedUser = result.user;
                 console.log(signInnedUser);
                 navigate(from, { replace: true })
                 form.reset()
+                setSuccess('log in successfully')
             })
             .catch(error => {
-                console.log(error);
+                setError (error.message)
             })
     }
 
@@ -88,9 +99,11 @@ const Login = () => {
                     Don't have an account? please <Link to='/resister'> Resister</Link>
                 </Form.Text>
                 <Form.Text className="text-success">
+                    {success}
 
                 </Form.Text>
                 <Form.Text className="text-danger">
+                    {error}
 
                 </Form.Text>
             </Form>
